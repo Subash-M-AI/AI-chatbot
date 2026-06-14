@@ -1,0 +1,578 @@
+/* CSS variables for consistent premium design theme */
+:root {
+    --bg-dark: #090d16;
+    --bg-sidebar: #0f172a;
+    --bg-card: #1e293b;
+    --border-color: #334155;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Vibrant food inspired accents */
+    --accent-saffron: #f97316; /* Warm Orange Saffron */
+    --accent-saffron-glow: rgba(249, 115, 22, 0.2);
+    --accent-cardamom: #10b981; /* Fresh green cardamom */
+    --accent-gold: #f59e0b; /* Golden tandoor */
+    --accent-gold-glow: rgba(245, 158, 11, 0.15);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-outfit: 'Outfit', sans-serif;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: var(--font-outfit);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Main Application Layout */
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Left Chat Sidebar */
+.chat-sidebar {
+    width: 450px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    z-index: 10;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+}
+
+/* Header Styling */
+.app-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 1) 100%);
+    backdrop-filter: blur(10px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-gold));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.logo-icon i {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.logo-text h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffffff, var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+}
+
+.logo-text span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: block;
+}
+
+.toggle-map-btn {
+    display: none; /* Only visible on mobile */
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.toggle-map-btn:hover {
+    background: var(--accent-saffron);
+    border-color: var(--accent-saffron);
+    box-shadow: 0 0 10px var(--accent-saffron-glow);
+}
+
+/* Quick Action Suggestion Chips */
+.quick-chips-container {
+    padding: 1rem 1.5rem 0.5rem 1.5rem;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.chips-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.chips-label i {
+    color: var(--accent-saffron);
+}
+
+.chips-list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none; /* Firefox */
+}
+
+.chips-list::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.suggestion-chip {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-family: var(--font-outfit);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+
+.suggestion-chip:hover {
+    border-color: var(--accent-gold);
+    background-color: rgba(245, 158, 11, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Chat Message Window */
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: radial-gradient(circle at top, rgba(30, 41, 59, 0.1) 0%, rgba(9, 13, 22, 0) 100%);
+}
+
+.message {
+    display: flex;
+    gap: 0.85rem;
+    max-width: 85%;
+}
+
+.message.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message.assistant-message {
+    align-self: flex-start;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.user-message .avatar {
+    background-color: #3b82f6;
+    color: white;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.assistant-message .avatar {
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-gold));
+    color: white;
+    box-shadow: 0 0 10px var(--accent-saffron-glow);
+}
+
+.message-content {
+    background-color: var(--bg-card);
+    padding: 0.85rem 1.15rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-message .message-content {
+    background-color: #1d4ed8; /* Deep rich blue */
+    border-color: #2563eb;
+    border-bottom-right-radius: 4px;
+    color: white;
+}
+
+.assistant-message .message-content {
+    border-bottom-left-radius: 4px;
+    border-left: 3px solid var(--accent-saffron);
+}
+
+/* Styling Markdown Elements inside Chat Bubbles */
+.message-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+}
+
+.message-content h4 {
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.message-content p {
+    margin-bottom: 0.5rem;
+}
+.message-content p:last-child {
+    margin-bottom: 0;
+}
+
+.message-content ul, .message-content ol {
+    margin-left: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.message-content li {
+    margin-bottom: 0.25rem;
+}
+
+.hint-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Animations */
+.message-fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(249, 115, 22, 0.7);
+    }
+}
+
+/* Typing Indicator Animation */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.25rem 0.5rem;
+}
+
+.typing-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Chat Input Panel */
+.chat-input-container {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(15, 23, 42, 0.95);
+}
+
+.chat-form {
+    display: flex;
+    gap: 0.75rem;
+    position: relative;
+}
+
+#user-input {
+    flex: 1;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.85rem 1.25rem;
+    color: var(--text-primary);
+    font-family: var(--font-outfit);
+    font-size: 0.9rem;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+#user-input:focus {
+    border-color: var(--accent-saffron);
+    box-shadow: 0 0 0 3px var(--accent-saffron-glow);
+}
+
+.send-btn {
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-gold));
+    border: none;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+    transition: var(--transition-smooth);
+}
+
+.send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(249, 115, 22, 0.4);
+}
+
+.send-btn:active {
+    transform: translateY(0);
+}
+
+.footer-credits {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+}
+
+/* Right Full Screen Map Wrapper */
+.map-wrapper {
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Modern styling for dark Leaflet map filters if standard tiles look bright */
+.leaflet-container {
+    background-color: #111b2d !important;
+}
+
+/* Custom styles for Leaflet Popups to match dark dashboard theme */
+.leaflet-popup-content-wrapper {
+    background-color: var(--bg-sidebar) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+    padding: 4px;
+}
+
+.leaflet-popup-tip {
+    background-color: var(--bg-sidebar) !important;
+    border-left: 1px solid var(--border-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.leaflet-popup-close-button {
+    color: var(--text-secondary) !important;
+    font-size: 14px !important;
+    padding: 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+    color: var(--accent-saffron) !important;
+}
+
+.map-popup-card h4 {
+    color: var(--accent-gold);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.25rem;
+}
+
+.map-popup-card p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+/* Map Overlay Panel (Taste Legend) */
+.map-overlay-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+    border-radius: 16px;
+    width: 280px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+}
+
+.map-overlay-panel h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+.map-overlay-panel h3 i {
+    color: var(--accent-saffron);
+}
+
+.map-overlay-panel p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.map-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.map-control-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-family: var(--font-outfit);
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: var(--transition-smooth);
+}
+
+.map-control-btn:hover {
+    border-color: var(--accent-saffron);
+    background-color: var(--accent-saffron-glow);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 850px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .chat-sidebar {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+    }
+    
+    .map-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        transform: translateX(100%);
+        transition: var(--transition-smooth);
+    }
+    
+    .map-wrapper.mobile-visible {
+        transform: translateX(0);
+    }
+    
+    .toggle-map-btn {
+        display: flex;
+    }
+    
+    .map-overlay-panel {
+        top: auto;
+        bottom: 30px;
+        right: 15px;
+        left: 15px;
+        width: calc(100% - 30px);
+    }
+}
